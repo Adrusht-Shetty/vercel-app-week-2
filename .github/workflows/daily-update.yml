@@ -2,7 +2,12 @@ name: Daily Automated Update
 
 on:
   schedule:
+    # Runs once every day at 05:30 AM UTC (adjust as needed)
     - cron: '30 05 * * *' 
+
+# NEW: Add this permissions block
+permissions:
+  contents: write # This grants the workflow explicit write access to the repository contents
 
 jobs:
   daily_commit:
