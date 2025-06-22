@@ -2,7 +2,8 @@ name: Daily Automated Update
 
 on:
   schedule:
-    - cron: '30 05 * * *'
+
+    - cron: '30 05 * * *' 
 
 jobs:
   daily_commit:
@@ -16,14 +17,15 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+
       - name: Create or update a file with current timestamp (23f2003980@ds.study.iitm.ac.in)
         run: |
-          echo "Last automated update: $(date -uIs)" > automated_update.txt
+          echo "Last automated update (23f2003980@ds.study.iitm.ac.in): $(date -uIs)" > automated_update.txt
           git add automated_update.txt
 
       - name: Commit changes
         run: |
-          git commit -m "Automated daily update for activity tracking" || echo "No changes to commit"
+          git commit -m "Automated daily activity update - $(date -uIs)"
 
       - name: Push changes
         uses: ad-m/github-push-action@master
